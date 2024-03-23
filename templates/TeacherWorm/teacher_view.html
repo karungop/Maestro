@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher View</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Google Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body> <!-- Apply background color to the body element -->
+
+<div class="top-box">
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       <!-- <a class="navbar-brand" href="#">
+            <img src="../bookWormLogo.png" class="custom-image" alt="Logo">
+        </a>-->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'student_articles' %}">Students</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_article' %}">Link Drop</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sign up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log in</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+                <div class="container-fluid d-flex flex-column justify-content-center" style="min-height: 80vh;">
+                    <div class="row">
+                        <div class="col-12 text-center mb-4">
+                            <h1 class="font-weight-bold">Article Generator</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 mx-auto">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <form method="post" action="{% url 'add_article' %}" class="mx-auto">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Reading Level:</div>
+                                            </div>
+                                            <select class="form-control mx-auto" name="difficulty">
+                                                <option value="Original">ORIGINAL</option>
+                                                <option value="Easy">EASY</option>
+                                                <option value="Medium">MEDIUM</option>
+                                                <option value="Hard">HARD</option>
+                                            </select>
+                                        </div>
+                                        {% csrf_token %}
+                                        <input type="url" name="article_url" class="form-control mb-3" placeholder="Paste article link here:" aria-label="Article link">
+                                        <button type="submit" class="btn btn-primary d-block mx-auto mb-3">Assign article</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        {% if article_generated %}
+            <script>
+                window.onload = function() {
+                    alert('The article has been successfully generated.');
+                };
+            </script>
+        {% endif %}
+    </body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.title }}</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Google Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="top-box">
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       <!-- <a class="navbar-brand" href="#">
+            <img src="../bookWormLogo.png" alt="Logo" style="width: 100px; height: auto; margin-right: 10px;">
+        </a>-->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'student_articles' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'student_articles' %}">Students</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_article' %}">Link Drop</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sign up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log in</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="container mt-3 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-6 my-3">
+            <img class="card-img-top" src="https://www.washingtonpost.com/wp-apps/imrs.php?src=https%3A%2F%2Farc-anglerfish-washpost-prod-washpost%252Es3%252Eamazonaws%252Ecom%2Fpublic%2F5N7F2GEFLRDZBLY7VVQDYT7G4M%252Ejpg&w=464&h=310" alt="Article Img" >
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col ">
+            <h1 class="font-weight-bold text-center">{{ article.title }}</h1>
+            <p class="text-center">{{ article.author }} <br> {{ article.date_published }}<p>
+            {% if article.new_text %}
+                <div style="white-space: pre-wrap;">{{ article.new_text }}</div>
+            {% else %}
+                <div style="white-space: pre-wrap;">{{ article.original_text }}</div>
+            {% endif %}
+        </div>
+    </div>
+    <hr class="my-4" style="border-color: #333;">
+    <!-- Questions Section -->
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="font-weight-bold">Test Your Knowledge:</h2>
+                    <div class="outlined-box mt-3">
+                        {% for question in questions %}
+                        <p>{{ question.question }}</p>
+                        {% if question.question_type == 'MCQ' %}
+                        <!-- Display MCQ Choices -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="question{{ question.id }}" id="correctChoice{{ question.id }}" value="{{ question.mcq_correct_choice }}">
+                            <label class="form-check-label" for="correctChoice{{ question.id }}">
+                                {{ question.mcq_correct_choice }}
+                            </label>
+                        </div>
+                        {% if question.mcq_incorrect_choice_1 %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="question{{ question.id }}" id="incorrectChoice1{{ question.id }}" value="{{ question.mcq_incorrect_choice_1 }}">
+                            <label class="form-check-label" for="incorrectChoice1{{ question.id }}">
+                                {{ question.mcq_incorrect_choice_1 }}
+                            </label>
+                        </div>
+                        {% endif %}
+                        {% if question.mcq_incorrect_choice_2 %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="question{{ question.id }}" id="incorrectChoice2{{ question.id }}" value="{{ question.mcq_incorrect_choice_2 }}">
+                            <label class="form-check-label" for="incorrectChoice2{{ question.id }}">
+                                {{ question.mcq_incorrect_choice_2 }}
+                            </label>
+                        </div>
+                        {% endif %}
+                        {% if question.mcq_incorrect_choice_3 %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="question{{ question.id }}" id="incorrectChoice3{{ question.id }}" value="{{ question.mcq_incorrect_choice_3 }}">
+                            <label class="form-check-label" for="incorrectChoice3{{ question.id }}">
+                                {{ question.mcq_incorrect_choice_3 }}
+                            </label>
+                        </div>
+                        {% endif %}
+                                    <br></br>
+
+                        {% elif question.question_type == 'FRQ' %}
+                            <textarea class="form-control" id="answer{{ question.id }}" rows="3" placeholder="Your answer here..."></textarea>
+                            <br></br>
+                        {% endif %}
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary center-button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Include Bootstrap JS (Optional) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

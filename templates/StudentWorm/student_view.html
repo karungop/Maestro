@@ -1,0 +1,71 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box with Border</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Google Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="top-box">
+        <!-- Bootstrap Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'student_articles' %}">Students</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_article' %}">Link Drop</a>
+                </li>
+            </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sign up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Log in</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h1 class="font-weight-bold">Assigned Articles</h1>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+        {% for article in articles %}
+            <div class="col-sm-6 col-md-4 mb-5">
+                <div class="card shadow" style="width: 20rem; height: 27rem;">
+                    <img class="card-img-top" src="https://www.washingtonpost.com/wp-apps/imrs.php?src=https%3A%2F%2Farc-anglerfish-washpost-prod-washpost%252Es3%252Eamazonaws%252Ecom%2Fpublic%2F5N7F2GEFLRDZBLY7VVQDYT7G4M%252Ejpg&w=464&h=310" alt="Card image cap">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><a href="{% url 'read_article' article.id %}">{{ article.title }}</a></h5>
+                        <p class="card-text mt-auto">{{ article.author }} <br> {{ article.date_published }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>

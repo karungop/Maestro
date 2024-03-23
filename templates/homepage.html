@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Google Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,200;1,200&family=Raleway:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
+</head>
+<body> <!-- Apply background color to the body element -->
+
+<div class="top-box">
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'student_articles' %}">Students</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_article' %}">Link Drop</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sign up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log in</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="min-height: 60vh;">
+    <div class="row text-center">
+        <div class="col">
+            <h1 class="font-weight-bold quote-space display-2">
+                <span>Book</span><span class="text-primary">Worm</span>
+            </h1>
+            <h5>A new era in literacy education</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-auto">
+            <a href="{% url 'student_articles' %}" class="btn btn-primary m-3">I'm a Student</a>
+            <a href="{% url 'add_article' %}" class="btn btn-primary m-3">I'm an Educator</a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid justify-content-center" style="background-image: linear-gradient(to top, #d3d3d3, #FFFFFF);">
+    <div class="row justify-content-center py-5">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="font-weight-bold">About Us:</h5>
+                    <p>Welcome to BookWorm, where we merge traditional teaching with cutting-edge technology. Our platform empowers teachers to assign tailored articles, dynamically adjusting difficulty levels using AI, ensuring content matches each student's proficiency. Additionally, our AI-generated questions streamline comprehension exercises, saving teachers time while enhancing student engagement and critical thinking. </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
