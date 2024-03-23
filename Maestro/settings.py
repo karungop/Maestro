@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'BookWorm.urls'
+ROOT_URLCONF = 'Maestro.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'BookWorm.wsgi.application'
+WSGI_APPLICATION = 'Maestro.wsgi.application'
 
 
 # Database
