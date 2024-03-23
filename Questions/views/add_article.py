@@ -7,7 +7,7 @@ import re
 from bs4 import BeautifulSoup
 import requests
 
-from TeacherWorm.models.articles import Article
+from Questions.models.articles import Article
 from datetime import datetime
 
 from django.http import HttpResponse
@@ -16,7 +16,7 @@ from django.template import Template
 import re
 from bs4 import BeautifulSoup
 import requests
-from TeacherWorm.models.articles import Article
+from Questions.models.articles import Article
 
 import openai
 from openai import OpenAI
@@ -26,7 +26,7 @@ import os
 
 import json
 
-from TeacherWorm.models.questions import Question
+from Questions.models.questions import Question
 
 # Load .env file
 load_dotenv()
@@ -121,7 +121,7 @@ def add_article(request):
             context['article_generated'] = True  # Set the flag as True if article processing is successful
 
 
-    return render(request, 'TeacherWorm/teacher_view.html', context)
+    return render(request, 'Questions/teacher_view.html', context)
 
 
 
