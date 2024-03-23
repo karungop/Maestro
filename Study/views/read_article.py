@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from TeacherWorm.models.articles import Article  # Ensure this is the correct import path for your Article model
-from TeacherWorm.models.questions import Question
+from Questions.models.articles import Article  # Ensure this is the correct import path for your Article model
+from Questions.models.questions import Question
 
 
 def read_article(request, article_id):
@@ -15,4 +15,4 @@ def read_article(request, article_id):
         'questions': questions,
 
     }
-    return render(request, 'StudentWorm/article_view.html', context)
+    return render(request, 'Study/article_view.html', context)
